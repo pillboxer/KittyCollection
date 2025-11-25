@@ -1,4 +1,4 @@
-import CoreKitty
+import KittyCore
 import SwiftUI
 
 public struct CollectionHomeView<P: Pack>: View {

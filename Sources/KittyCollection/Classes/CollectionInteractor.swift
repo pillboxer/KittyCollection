@@ -1,4 +1,4 @@
-import CoreKitty
+import KittyCore
 
 final class CollectionInteractor<P: Pack>: Interactor {
 	

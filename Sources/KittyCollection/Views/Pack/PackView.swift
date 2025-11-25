@@ -1,5 +1,5 @@
 import SwiftUI
-import CoreKitty
+import KittyCore
 
 struct PackView<P: Pack>: View {
 	

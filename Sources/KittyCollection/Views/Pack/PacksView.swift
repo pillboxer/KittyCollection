@@ -1,4 +1,4 @@
-import CoreKitty
+import KittyCore
 import SwiftUI
 
 struct PacksView<P: Pack, D: View>: View {

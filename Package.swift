@@ -4,15 +4,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "CollectionKitty",
+    name: "KittyCollection",
 	platforms: [.iOS(.v26)],
-    products: [.library(name: "CollectionKitty", targets: ["CollectionKitty"]),],
-	dependencies: [.package(name: "CoreKitty", path: "../CoreKitty")],
+    products: [.library(name: "KittyCollection", targets: ["KittyCollection"]),],
+	dependencies: [.package(name: "KittyCore", path: "../KittyCore")],
     targets: [
 		.target(
-			name: "CollectionKitty",
-			dependencies: [.product(name: "CoreKitty", package: "CoreKitty")]
+			name: "KittyCollection",
+			dependencies: [.product(name: "KittyCore", package: "KittyCore")]
 		),
-        .testTarget(name: "CollectionKittyTests", dependencies: ["CollectionKitty"]),
     ]
 )

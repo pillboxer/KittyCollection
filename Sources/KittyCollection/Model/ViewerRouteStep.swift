@@ -1,4 +1,4 @@
-import CoreKitty
+import KittyCore
 
 enum CollectionRouteStep<P: Pack>: Routable {
 	case packDetail(P)
