@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol Pack: Decodable, Identifiable {
+public protocol Pack: Decodable, Identifiable, Equatable, Hashable {
 	associatedtype PackItem: Item
 	var id: UUID { get }
 	var title: String { get }

@@ -1,11 +1,13 @@
 import SwiftUI
+import CoreKitty
 
 struct PackView<P: Pack>: View {
 	
 	let pack: P
 	
-	private let columns = Array(repeating: GridItem(.flexible()), count: 3)
+	private let columns = Array(repeating: GridItem(.flexible()), count: 2)
 	@CodableStorage(.completedItems) private var completedItems: Set<P.PackItem>?
+	@EnvironmentObject private var interactor: CollectionInteractor<P>
 	
 	var body: some View {
 		ScrollView(content: makeGrid)
@@ -20,7 +22,7 @@ private extension PackView {
 			ForEach(pack.items) { item in
 				PackItemView(
 					item: item,
-					onTap: { withAnimation { _completedItems.toggle(element: item) } },
+					onTap: { interactor.showItemDetail(item) },
 					image: { makeImage(item) }
 				)
 			}

@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol Item: Codable, Identifiable, Hashable {
+public protocol Item: Codable, Identifiable, Hashable, Equatable {
 	var id: UUID { get }
 	var title: String { get }
 	var description: String { get }

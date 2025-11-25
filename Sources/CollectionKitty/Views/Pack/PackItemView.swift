@@ -19,7 +19,6 @@ private extension PackItemView {
 			.resizable()
 			.aspectRatio(contentMode: .fit)
 			.frame(maxHeight: 88)
-			.animation(.default)
 			.onTapGesture(perform: onTap)
 	}
 	
