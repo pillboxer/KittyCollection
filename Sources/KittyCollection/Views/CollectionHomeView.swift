@@ -1,7 +1,10 @@
 import KittyCore
+import SwiftData
 import SwiftUI
 
 public struct CollectionHomeView<P: Pack>: View {
+	
+	@Environment(\.modelContext) private var modelContext
 	private let router = Router()
 	
 	public init() {}
@@ -22,8 +25,12 @@ private extension CollectionHomeView {
 	@ViewBuilder
 	func makeDestination(_ step: CollectionRouteStep<P>) -> some View {
 		switch step {
-		case .packDetail(let pack): PackView<P>(pack: pack)
-		case .itemDetail(let item): ItemView(item: item)
+		case .packDetail(let pack):
+			PackView<P>(pack: pack)
+		case .itemDetail(let item):
+			ItemView(item: item) {
+				modelContext.insert(Entry(itemID: item.id))
+			}
 		}
 	}
 }

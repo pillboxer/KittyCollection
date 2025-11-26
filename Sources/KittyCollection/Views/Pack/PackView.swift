@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 import KittyCore
 
 struct PackView<P: Pack>: View {
@@ -6,8 +7,9 @@ struct PackView<P: Pack>: View {
 	let pack: P
 	
 	private let columns = Array(repeating: GridItem(.flexible()), count: 2)
-	@CodableStorage(.completedItems) private var completedItems: Set<P.PackItem>?
 	@EnvironmentObject private var interactor: CollectionInteractor<P>
+	@Environment(\.modelContext) private var modelContext
+	@Query private var entries: [Entry]
 	
 	var body: some View {
 		ScrollView(content: makeGrid)
@@ -32,7 +34,7 @@ private extension PackView {
 	
 	func makeImage(_ item: P.PackItem) -> Image {
 		Image(
-			completedItems?.contains(item) ?? false
+			entries.map(\.itemID).contains(item.id) ?? false
 			? pack.fillImage
 			: pack.outlineImage
 		)
